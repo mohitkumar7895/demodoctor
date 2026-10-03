@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Calendar, Search, Stethoscope, ChevronDown, Menu, X, ShieldCheck, HeartPulse, Building2 } from 'lucide-react';
+import { Calendar, Search, Stethoscope, ChevronDown, Menu, X, ShieldCheck, HeartPulse, Building2, Phone } from 'lucide-react';
 import { useDoctorContext } from '@/context/DoctorContext';
 
 export default function Navbar() {
@@ -129,9 +129,10 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Right CTA Area & Mobile Hamburger */}
+        {/* Right CTA Area & Mobile Hamburger (Triple Point) */}
         <div className="navbar-actions">
-          <a href="tel:+918650559698" className="nav-phone-chip" title="24/7 Helpline">
+          {/* Phone chip is desktop only - moved to triple point menu on mobile */}
+          <a href="tel:+918650559698" className="nav-phone-chip desktop-only-phone" title="24/7 Helpline">
             <span>📞 8650559698</span>
           </a>
 
@@ -140,8 +141,8 @@ export default function Navbar() {
             className="book-appointment-cta compact"
             onClick={() => openBooking()}
           >
-            <Calendar size={14} />
-            <span className="cta-btn-text">Book Appointment</span>
+            <Calendar size={13} />
+            <span className="cta-btn-text">Book</span>
           </button>
 
           {/* Mobile Menu Toggle Button */}
@@ -217,6 +218,28 @@ export default function Navbar() {
               <Calendar size={18} />
               <span>Book Doctor Appointment</span>
             </button>
+
+            {/* 24/7 Helpline inside Triple Point Menu */}
+            <div className="mobile-drawer-contact-card">
+              <span className="drawer-contact-label">24/7 Emergency &amp; Medical Helpline</span>
+              <a 
+                href="tel:+918650559698" 
+                className="mobile-nav-call-btn"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Phone size={17} />
+                <span>Call +91 8650559698</span>
+              </a>
+              <a 
+                href="https://wa.me/918650559698" 
+                target="_blank" 
+                rel="noreferrer"
+                className="mobile-nav-wa-btn"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>💬 WhatsApp +91 8650559698</span>
+              </a>
+            </div>
           </div>
         </div>
       )}

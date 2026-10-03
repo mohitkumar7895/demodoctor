@@ -3397,29 +3397,32 @@ input, select, textarea {
 
 .floating-action-cluster {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
+  right: 20px;
+  bottom: 20px;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
   z-index: 900;
 }
 
 .scroll-top-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   background: #008f80;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 12px rgba(0, 143, 128, 0.35);
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .scroll-top-btn:hover {
   background: #007064;
+  transform: translateY(-2px);
 }
 
 .floating-phone-badge {
@@ -3428,29 +3431,30 @@ input, select, textarea {
   gap: 8px;
   background: #008599;
   color: #ffffff;
-  padding: 8px 16px;
+  padding: 8px 14px;
   border-radius: 9999px;
   text-decoration: none;
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   box-shadow: 0 4px 14px rgba(0, 133, 153, 0.35);
-  transition: transform 0.2s;
+  transition: all 0.2s;
 }
 
 .floating-phone-badge:hover {
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 133, 153, 0.45);
 }
 
 .phone-clock-icon {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: #ffffff;
   color: #008599;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 900;
 }
 
@@ -3460,17 +3464,19 @@ input, select, textarea {
   gap: 6px;
   background: #004b87;
   color: #ffffff;
-  padding: 9px 18px;
+  padding: 8px 16px;
   border-radius: 9999px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   box-shadow: 0 4px 14px rgba(0, 75, 135, 0.35);
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .floating-callback-btn:hover {
   background: #003666;
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 75, 135, 0.45);
 }
 
 .callback-modal {
@@ -3723,8 +3729,71 @@ input, select, textarea {
 }
 
 /* ========================================================
-   RESPONSIVE DESIGN BREAKPOINTS
+   RESPONSIVE DESIGN BREAKPOINTS (FULL MOBILE OPTIMIZED)
    ======================================================== */
+
+/* Utility classes for mobile drawer helpline card */
+.mobile-drawer-contact-card {
+  margin-top: 10px;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawer-contact-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mobile-nav-call-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--primary-navy);
+  color: #ffffff;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(12, 35, 64, 0.2);
+}
+
+.mobile-nav-call-btn:hover {
+  background: #003666;
+  color: #ffffff;
+}
+
+.mobile-nav-wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.mobile-nav-wa-btn:hover {
+  background: #d1fae5;
+}
+
+/* Tablet & Smaller Desktops */
 @media (max-width: 1100px) {
   .service-cards-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -3741,16 +3810,11 @@ input, select, textarea {
   .footer-cols-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .utility-left-links {
-    display: none;
-  }
-  .utility-container {
-    justify-content: flex-end;
-  }
 }
 
+/* Tablets & Mobile Navigation Breakpoint (<= 1024px) */
 @media (max-width: 1024px) {
-  .desktop-nav, .desktop-only {
+  .desktop-nav, .desktop-only, .desktop-only-phone, .nav-phone-chip {
     display: none !important;
   }
   .mobile-hamburger-btn {
@@ -3759,34 +3823,15 @@ input, select, textarea {
   .mobile-nav-drawer {
     display: block;
   }
-  .utility-left-links {
-    display: none;
-  }
-  .utility-container {
-    justify-content: flex-end;
-  }
   .hospital-banner-img-wrap {
     height: 300px;
-  }
-  .banner-badge-float {
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
-    padding: 10px 14px;
-    max-width: none;
-  }
-  .banner-badge-title {
-    font-size: 0.95rem;
-  }
-  .banner-badge-sub {
-    font-size: 0.75rem;
   }
   .schedule-section-container {
     margin: -30px auto 30px;
     padding: 0 16px;
   }
   .schedule-main-heading {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
     padding: 6px 18px;
     margin-bottom: 18px;
   }
@@ -3796,13 +3841,16 @@ input, select, textarea {
   }
   .search-card-form {
     flex-direction: column;
+    gap: 10px;
   }
   .search-field-group, .location-group {
     width: 100%;
+    flex: none;
   }
   .search-submit-btn {
     width: 100%;
     justify-content: center;
+    height: 42px;
   }
   .service-cards-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -3836,47 +3884,666 @@ input, select, textarea {
     justify-content: center;
   }
   .vertical-emergency-tab {
-    display: none;
+    display: none !important;
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile Phones (<= 768px) */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .main-content-flow {
+    overflow-x: hidden;
+  }
+
   .hospital-banner-img-wrap {
-    height: 220px;
+    height: 240px;
   }
-  .banner-badge-float {
-    display: none;
-  }
+
   .schedule-section-container {
-    margin: -20px auto 24px;
+    margin: -24px auto 24px;
+    padding: 0 12px;
   }
+
   .schedule-main-heading {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     padding: 6px 14px;
+    margin-bottom: 14px;
+    text-align: center;
   }
+
+  .search-appointment-card {
+    padding: 14px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  }
+
+  .search-field-group {
+    padding: 9px 12px;
+    border-radius: 8px;
+  }
+
+  .search-input, .location-select {
+    font-size: 16px; /* Prevents auto-zoom in mobile Safari */
+  }
+
+  .quick-tags-row {
+    margin-top: 10px;
+    padding-top: 10px;
+    gap: 6px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .quick-tag-chip {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    padding: 4px 8px;
+  }
+
+  /* 5 Quick Service Cards on Mobile */
   .service-cards-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
+
+  .service-card {
+    padding: 14px 10px;
+    border-radius: 10px;
+  }
+
+  .service-card-icon-wrap {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+  }
+
+  .service-card-title {
+    font-size: 0.84rem;
+  }
+
+  .service-card-desc {
+    font-size: 0.7rem;
+  }
+
+  /* Specialties Section */
+  .specialties-section {
+    padding: 40px 12px;
+  }
+
+  .section-main-title {
+    font-size: 1.35rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.82rem;
+  }
+
+  .specialties-header-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .subtabs-toggle {
+    width: 100%;
+    display: flex;
+  }
+
+  .subtab-btn {
+    flex: 1;
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+
+  .spec-item-card {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .spec-icon-box {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .spec-name {
+    font-size: 0.92rem;
+  }
+
+  .spec-desc {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .expert-callout-card {
+    padding: 18px 14px;
+    margin-top: 16px;
+  }
+
+  .callout-title {
+    font-size: 1.15rem;
+  }
+
+  .expert-card-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .callout-primary-btn, .callout-secondary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Doctor Listing Section */
+  .doctor-listing-section {
+    padding: 36px 12px;
+  }
+
+  .listing-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .listing-main-title {
+    font-size: 1.35rem;
+  }
+
+  .filter-controls-bar {
+    padding: 14px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  .specialty-pills-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+  }
+
+  .spec-pill-btn {
+    flex-shrink: 0;
+    padding: 5px 12px;
+    font-size: 0.76rem;
+  }
+
+  .secondary-filters-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .sort-dropdown-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .sort-select {
+    flex: 1;
+    max-width: 190px;
+    font-size: 16px; /* Prevents auto-zoom */
+  }
+
+  .reset-filters-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 6px 0;
+  }
+
+  /* Doctor Card on Mobile */
+  .doctors-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .doctor-card {
+    border-radius: 12px;
+  }
+
+  .doctor-card-body {
+    padding: 14px;
+  }
+
+  .doctor-header-row {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .doctor-avatar-wrapper {
+    width: 68px;
+    height: 68px;
+  }
+
+  .doctor-name {
+    font-size: 1.05rem;
+  }
+
+  .doctor-quals {
+    font-size: 0.75rem;
+  }
+
+  .doctor-meta-grid {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .meta-text {
+    font-size: 0.76rem;
+  }
+
+  .doctor-card-footer {
+    padding-top: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .fee-amount {
+    font-size: 1.05rem;
+  }
+
+  /* Doctor Dashboard on Mobile */
+  .doctor-dashboard-container {
+    padding: 16px 12px;
+  }
+
+  .dash-header-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .doc-select-box {
+    width: 100%;
+  }
+
+  .doc-select-box select {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .metric-card {
+    padding: 12px 10px;
+  }
+
+  .metric-val {
+    font-size: 1.25rem;
+  }
+
+  .status-tabs-row {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+
+  .status-tab-btn {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    font-size: 0.76rem;
+  }
+
+  .appt-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .appt-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .appt-actions-row {
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .btn-action {
+    flex: 1;
+    min-width: 100px;
+    justify-content: center;
+    font-size: 0.74rem;
+    padding: 6px 8px;
+  }
+
+  /* Patient Portal on Mobile */
+  .patient-portal-container {
+    padding: 16px 12px;
+  }
+
+  .patient-header-banner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    gap: 14px;
+    text-align: left;
+  }
+
+  .patient-avatar-box {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+
+  .patient-name-title {
+    font-size: 1.25rem;
+  }
+
+  .book-new-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .booking-record-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .booking-card-main {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .booking-card-status-col {
+    align-items: flex-start;
+    width: 100%;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 10px;
+  }
+
+  .download-rx-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Health Blogs on Mobile */
+  .health-blogs-section {
+    padding: 36px 12px;
+  }
+
+  .blogs-header-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .blogs-view-toggle {
+    width: 100%;
+    display: flex;
+  }
+
+  .blog-toggle-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .blogs-cards-grid, .updates-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .blog-card-image {
+    height: 180px;
+  }
+
+  .blog-card-content {
+    padding: 14px;
+  }
+
+  /* Mobile Full Sheet Modals */
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .modal-container {
+    max-height: 92vh;
+    border-radius: 18px 18px 0 0;
+    animation: slideInBottom 0.25s ease-out;
+  }
+
+  .modal-header {
+    padding: 14px 16px;
+  }
+
+  .modal-title {
+    font-size: 1.15rem;
+  }
+
+  .modal-body {
+    padding: 16px;
+  }
+
+  .modal-body input, 
+  .modal-body select, 
+  .modal-body textarea {
+    font-size: 16px; /* Prevents auto-zoom on mobile */
+  }
+
+  .slots-select-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .slot-btn {
+    padding: 8px 6px;
+    font-size: 0.76rem;
+  }
+
+  .modal-footer {
+    padding: 12px 16px;
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .modal-submit-btn, .modal-cancel-btn {
+    width: 100%;
+    height: 42px;
+    justify-content: center;
+  }
+
+  /* Footer on Mobile */
+  .footer-emergency-strip {
+    padding: 16px 14px;
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .strip-left {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .strip-right {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .emergency-call-btn, .emergency-wa-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .footer-main-container {
+    padding: 28px 16px 20px;
+  }
+
+  .footer-cols-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .footer-legal-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Floating Emergency Actions on Mobile */
+  .floating-action-cluster {
+    bottom: 12px;
+    right: 12px;
+    gap: 8px;
+  }
+
+  .floating-phone-badge {
+    padding: 6px 11px;
+    font-size: 0.72rem;
+  }
+
+  .floating-callback-btn {
+    padding: 6px 11px;
+    font-size: 0.72rem;
+  }
+
+  .scroll-top-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Compact Smartphones (<= 480px) */
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .brand-logo-short {
+    gap: 6px;
+  }
+
+  .brand-name-short {
+    font-size: 1.15rem;
+  }
+
+  .logo-symbol.mini {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Phone is moved to triple point menu on mobile */
+  .nav-phone-chip, .desktop-only-phone {
+    display: none !important;
+  }
+
+  .book-appointment-cta.compact {
+    padding: 4px 7px;
+    font-size: 0.68rem;
+  }
+
+  .hospital-banner-img-wrap {
+    height: 200px;
+  }
+
+  .schedule-main-heading {
+    font-size: 1.05rem;
+    padding: 5px 12px;
+  }
+
+  .service-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .service-card {
+    padding: 10px 6px;
+  }
+
+  .service-card-title {
+    font-size: 0.78rem;
+  }
+
+  .service-card-desc {
+    font-size: 0.66rem;
+  }
+
+  .doctor-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .fee-box {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .action-buttons-group {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+
+  .view-profile-btn, .book-slot-btn {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    padding: 7px 6px;
+  }
+
   .consult-type-toggle {
     grid-template-columns: 1fr;
   }
+
   .slots-select-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .hero-stats-row {
-    border-radius: var(--radius-md);
-    gap: 16px;
+}
+
+/* Extra Small Phones (<= 360px) */
+@media (max-width: 360px) {
+  .service-cards-grid {
+    grid-template-columns: 1fr;
   }
-  .floating-action-cluster {
-    right: 12px;
-    bottom: 12px;
+  .schedule-main-heading {
+    font-size: 0.95rem;
   }
-  .floating-phone-badge {
-    padding: 6px 12px;
-    font-size: 0.75rem;
+  .metrics-grid {
+    grid-template-columns: 1fr;
   }
-  .floating-callback-btn {
-    padding: 6px 12px;
-    font-size: 0.75rem;
+}
+
+@keyframes slideInBottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
